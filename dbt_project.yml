@@ -38,3 +38,5 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   customer_orders:
     +materialized: table
+  elementary:
+    +schema: elementary
