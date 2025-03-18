@@ -38,7 +38,6 @@ final as (
     from customers
 
     left join customer_orders using (customer_id)
-
 )
-/* This is the FINAL SQL AFTER COMBINING CUSTOMER WITH ORDERS */  
+ 
 select * from final
