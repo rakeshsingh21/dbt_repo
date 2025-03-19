@@ -24,7 +24,6 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
 
-
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
@@ -38,5 +37,22 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   customer_orders:
     +materialized: table
-  elementary:
-    +schema: elementary
+    elementary:
+      +schema: "elementary"
+
+  dbt_artifacts:  # This just defined as the artifact store for customer_orders model....  In order to work this need to add macro to insert the details to the tables
+                  # Using elementary package it can be achieved easily
+    +database: raw 
+    +schema: dbt_artifacts
+
+#pre-hook: */ It was NOT working
+#  - "{{ dbt_artifacts.upload_results('STARTing') }}"
+#
+#post-hook:
+#  - "{{ dbt_artifacts.upload_results('END END') }}" */ 
+
+query-comment: 'DBT RUN COMPLETED'    #This msg is printed only on log file not in run_result.json
+
+#on-run-end:  ## Was causing error that dbt_artifacts NOT found
+#  - "{{ dbt_artifacts.upload_results(results) }}"
+#  - "{{ dbt_artifacts.upload_results('PROCESS ENDED ') }}"
