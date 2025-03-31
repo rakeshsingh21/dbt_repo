@@ -58,11 +58,14 @@ models:
     #  +schema: "HELIX_STG"             # This is the Target schema ...  Since target schema is already mentioned under the credential connection for dev ,, so not needed here. IF WE KEEP IT HERE THEN WILL APPEND THIS NAME IN THE SCHEMA NAME MENTIONED IN THE CONNECTION  
        
 
-#pre-hook: */ It was NOT working
-#  - "{{ dbt_artifacts.upload_results('STARTing') }}"
-#
-#post-hook:
-#  - "{{ dbt_artifacts.upload_results('END END') }}" */ 
+#on-run-end:
+ # -  "{{ log_dbt_results(results) }}"
+
+#vars:
+#  tgt_database: "{{get_database_name()}}"
+
+#on-run-end:
+#  - "{{ dbt_artifacts.upload_results(results) }}"
 
 query-comment: 'DBT RUN COMPLETED'    #This msg is printed only on log file not in run_result.json
 
