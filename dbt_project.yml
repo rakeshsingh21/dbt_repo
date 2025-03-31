@@ -55,7 +55,7 @@ models:
     RAW_Cust:
       +materialized: table
       +database: "DA_HELIX_DB_TEST"     # This is the target DB run taking from ... if commented then it goes to DEV
-    #  +schema: "HELIX_STG"             # This is the Target schema ...  Since target schema is already mentioned under the credential connection for dev ,, so not needed here 
+    #  +schema: "HELIX_STG"             # This is the Target schema ...  Since target schema is already mentioned under the credential connection for dev ,, so not needed here. IF WE KEEP IT HERE THEN WILL APPEND THIS NAME IN THE SCHEMA NAME MENTIONED IN THE CONNECTION  
        
 
 #pre-hook: */ It was NOT working
