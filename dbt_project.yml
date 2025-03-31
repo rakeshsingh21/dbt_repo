@@ -42,8 +42,21 @@ models:
 
   dbt_artifacts:  # This just defined as the artifact store for customer_orders model....  In order to work this need to add macro to insert the details to the tables
                   # Using elementary package it can be achieved easily
-    +database: raw 
-    +schema: dbt_artifacts
+    +database: raw           # This is the Target DB
+    +schema: dbt_artifacts   # This will be the target Schema ... But if the target schema already mentioned in the connection then it will appent it to that name ...  In Dev env this is the default Behaviour
+
+  models:
+    helix_poc:
+    # Applies to all files under models/example/
+  #  example:
+  #    +materialized: table
+  #  elementary:
+  #    +schema: "elementary"
+    RAW_Cust:
+      +materialized: table
+      +database: "DA_HELIX_DB_TEST"     # This is the target DB run taking from ... if commented then it goes to DEV
+    #  +schema: "HELIX_STG"             # This is the Target schema ...  Since target schema is already mentioned under the credential connection for dev ,, so not needed here 
+       
 
 #pre-hook: */ It was NOT working
 #  - "{{ dbt_artifacts.upload_results('STARTing') }}"
