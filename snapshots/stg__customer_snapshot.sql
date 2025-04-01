@@ -1,4 +1,4 @@
-{% snapshot RAW_CUST %}
+{% snapshot stg_customer_snapshot %}
 
 {{
     config(
@@ -12,7 +12,8 @@
 
 SELECT * , {{ get_ts_usr_acname() }}
 from 
-    DA_HELIX_DB_TEST.HELIX_STG.raw_customer C 
+    {{ source('helix_poc_proj', 'RAW_CUSTOMER_NEW') }} C
+    --DA_HELIX_DB_TEST.HELIX_STG.raw_customer_new C 
 WHERE 
     EXISTS (select n_name from SNOWFLAKE_SAMPLE_DATA.TPCH_SF1000.NATION A where A.n_name = C.c_nation_name )
 AND EXISTS (select r_name from SNOWFLAKE_SAMPLE_DATA.TPCH_SF1000.REGION B where B.r_name = C.c_region_name)    
