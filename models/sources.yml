@@ -1,12 +1,15 @@
 version: 2
 
 sources:
-  - name: customer_orders
-    description: This is a replica of the Postgres database used by our app
-    database: raw
-    schema: jaffle_shop
+  - name: "helix_poc_proj"
+    database: DA_HELIX_DB_TEST
+    schema: HELIX_RAW
     tables:
-      - name: customers
-        description: One record per customer.
-      - name: orders
-        description: One record per order. Includes cancelled and deleted orders.
+      - name: "RAW_CUSTOMER_NEW"
+      - name: "RAW_LINEITEM"
+      - name: "RAW_NATION"
+      - name: RAW_ORDERS
+      - name: RAW_PART
+      - name: RAW_PARTSUPP
+      - name: RAW_REGION
+      - name: RAW_SUPPLIER
