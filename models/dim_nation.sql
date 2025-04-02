@@ -2,12 +2,12 @@
     config( 
         target_database='DA_HELIX_DB_TEST',
         target_schema='HELIX_CDW',
-        unique_key='n_name' 
+        unique_key='c_nation_name' 
     )
 }}
 
 SELECT --B.n_nationkey as n_nationkey, 
-        seq_stg_part.nextval as n_nationkey,
+        seq_stg_part.nextval as nationkey,
         B.r_regionkey as n_regionkey , A.c_nation_name as c_nation_name, A.c_nation_comment as c_nation_comment, 
        {{ get_ts_usr_acname() }} 
 FROM 
