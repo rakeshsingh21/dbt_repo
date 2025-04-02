@@ -14,4 +14,4 @@ FROM
     {{ ref('stg_customer')}} A
 -- INNER JOIN SNOWFLAKE_SAMPLE_DATA.TPCH_SF1000.nation B where B.n_name = A.c_nation_name  -- c_region_name
     INNER JOIN {{ ref('stg_region')}} B where B.r_name A.c_region_name
-qualify row_number() over(partition by n_nationkey order by n_nationkey) =1 
+qualify row_number() over(partition by c_nation_name order by c_nation_name) =1 
