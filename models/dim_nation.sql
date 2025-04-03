@@ -2,7 +2,7 @@
     config( 
         target_database='DA_HELIX_DB_TEST',
         target_schema='HELIX_CDW',
-        unique_key='c_nation_name' 
+        unique_key='c_region_name' 
     )
 }}
 
