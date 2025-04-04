@@ -3,7 +3,7 @@
     config( 
         target_database='DA_HELIX_DB_TEST',
         target_schema='HELIX_CDW',
-        unique_key='ps_supp_code' 
+        unique_key='ps_supp_code' --> Check on it
     )
 }}
 
