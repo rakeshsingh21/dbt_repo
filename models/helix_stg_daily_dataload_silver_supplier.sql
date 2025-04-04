@@ -8,7 +8,7 @@
     )
 }}
 
-SELECT seq_stg_part.nextval as suppkey, *, 
+SELECT seq_stg_part.nextval as suppkey, *, nation_key
        {{ get_ts_usr_acname() }} 
 FROM 
     {{ ref('stg_supplier')}} 
